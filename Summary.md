@@ -40,3 +40,10 @@ __Probabilities__
 - Complementary event: The complementary event to A, signified as A’, encompasses the probability of all potential outcomes in the sample space not included in A.
 - Mutually exclusive: When two events have no shared outcomes, they are viewed as mutually exclusive.
 - Independent: Two events are deemed independent when the occurrence of one doesn’t impact the occurrence of the other. $P(A \cap B) = P(A).P(B)$
+- A discrete random variable refers to a variable that can assume a finite or countably infinite number of potential outcomes.
+- The probability distribution of a discrete random variable assigns a certain likelihood to each potential outcome the variable could adopt.
+- The probability density function (PDF) is a tool used to describe the distribution of a continuous random variable.
+- Maximum likelihood is a statistical approach, that is used to estimate the parameters of a probability distribution. The objective is to identify the parameter values that maximize the likelihood of observing the data, essentially determining the parameters most likely to have generated the data.
+- The maximum likelihood estimate (MLE) is the parameter vector value that offers the maximum value for the likelihood function across the parameter space.
+- Bayesian estimation is a statistical approach that involves updating our beliefs or probabilities about a quantity of interest based on new data.
+- 
