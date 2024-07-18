@@ -134,7 +134,7 @@ x \\
 $$\begin{equation}
 \begin{cases}
 x \\ 
-\alpha
+\alpha (e^x -1)
 \end{cases}
 \end{equation}$$
  
