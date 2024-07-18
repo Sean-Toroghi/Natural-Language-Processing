@@ -161,6 +161,10 @@ __Challenges of training a neural network__
 # Language model
 
 A language model is a statistical model in NLP that is designed to learn and understand the structure of human language. More specifically, it is a probabilistic model that is trained to estimate the likelihood of words when provided with a given word scenario.
+During past five years a large number, and growing, number of language models are developed and introduced [ref](https://learning.oreilly.com/library/view/mastering-nlp-from/9781804619186/): 
+![image](https://github.com/user-attachments/assets/6033886f-1733-44aa-8006-2c3913897174)
+
+
 
 ## Self-suprevised language models
 __Maked language modeling__
@@ -187,7 +191,22 @@ In transfer learning, a model is typically trained on a large-scale task, and th
 ## Tokenization
 To make a language model more efficient, the input first need to be converted into a limited number of tokens, called tokenization. Some of the tokinzation algorithms are byte pair encoding (BPE), unigram language model (ULM), and WordPiece. They split words into smaller subword units.
 
-## BERT
+## n-gram models
+Simpler language models that use $n-1$ prior words to predict the $n^{th}$ word in a sequence. They are easy to implement and computationaly efficient, in the cost of performance. They lack capturing long-range deeondencies that is an important characteritic of a human language. As the result, their performance degtrades as the size of sequence increases. 
+
+## Hidden Markov models
+These models consider the “hidden” states that generate the observed data. In the context of language modeling, each word would be an observed state, and the “hidden” state would be some kind of linguistic feature that’s not directly observable (such as the part of speech of the word). However, like n-gram models, HMMs struggle to capture long-range dependencies between words.
+
+## Recurrent neural network models
+As a type of neural network approach, these models benefits from their internal state (memory) to process sequences of inputs and capturing long-range dependencies between words. However, they suffer from vanishing gradient problem.
+
+## LSTM models
+As a special type of RNN, LSTM addresses the long-range dependency requirement for modeling a language by adding series if gates that control the flow of information into and out of memory states in the network. 
+
+## Gated recurrent unit (GRU) networks
+As a variation of LSTM, GRU uses gates slightly different. Based on the task in hand they could perform better or worse than LSTM.
+
+## Transformer-based model: BERT
 Based on transformer model architecture, BERT is designed to pretrain deep bidirectional representations from the unlabeled text by joint conditioning on both left and right contexts in all layers. 
 
 BERT tokenizer is a critical part of the model, which uses WordPiece tokenization. The steps BERT tokenizer takes are as following:
@@ -229,22 +248,34 @@ In the __zero-shot__ setting, the model is given a task without any prior exampl
 
 __NOTE__: GPT models have difficulty in learning tasks that requrie deep understanding of the words or common sense reasoning beyond what can be learned from text.
 
+## Modeling pipeline
+
+Developing a NLP-solution for a real-world problem requires to define a pipeline. The following diagram shows an example of a pipeline:
+
+![image](https://github.com/user-attachments/assets/b845cd6d-1bc7-4292-848a-df244b33cd86)
 
 
-## Classification with machine learning
-  
+---
+# Large language models
+
+LLMs are a subset of artificial intelligence (AI) models that can understand and generate human-like text.
+
+Language models such as the newer versions of GPT models (3 and above) are considered as large language models. They are huge in size, and are trained on a very large dataset. Their performace correlated with their size and size of the data they trained on. LLMs are sessentially scaled-up versions of smaller language models. 
+
+The improvement in performance of LLMs relies on diversity and size of the data they were trained on, which makes them capable of understanding context, identifying nuances, and generating coherent and contextually relevant responses. 
+
+LLMs also are better in generalizing across different tasks, domain, or languages. The following picture [ref]() depics the 
 
 ---
 
-## Classification with deep learning
+ 
+---
+
+# RAG
 
 ---
 
-## RAG
-
----
-
-## LLM
+# Advance approaches driven by LLM
 
 ---
 
