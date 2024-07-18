@@ -123,14 +123,16 @@ Some of the famouse activation functions
 - tanh: squashes input into range between -1 and 1, which makes it zero centered. However, it still suffer from vanishing gradient problem.
 - ReLU = $max(0,x)$: fixes the problem of vanishing gradient. But suffer from potential die issue.
 - Leaky ReLU = $max(0..0x, x)$ fixed the _dying ReLU_ problem
-- ELU =
+- ELU, adds a smoothness via $\alpha$ to return a non-zero value for negative input $x$
 
-$$\begin{equation}
+$$ELU  = \begin{equation}
 \begin{cases}
 x & x > 0 \\ 
 \alpha (e^x -1) & \text{otherwise}
 \end{cases}
 \end{equation}$$
+
+ - softmax function: if the goal is to get a probability, we can employ softmax function $f(x_i) = \frac{e^x_i}{\sum e_x_j}$
  
 
 ## Classification with machine learning
