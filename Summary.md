@@ -296,9 +296,13 @@ RHLF is an iterative process and follows these steps:
    PPO attempts to improve the model’s responses based on human feedback, making small adjustments to the model’s parameters to increase the likelihood of better-rated responses and decrease the likelihood of worse-rated responses.
 
 ## PPO
-PPO is a reinforcement learning algorithm used to optimize the π policy of an agent. The policy defines how the agent selects actions based on its current state. PPO aims to optimize this policy to maximize the expected cumulative rewards.
+PPO is a reinforcement learning algorithm used to optimize the π policy of an agent. PPO aims to optimize the policy to maximize the expected cumulative rewards. The goal of the agent is to learn a policy π that maximizes the expected sum of rewards.
 
+__Policy__: the policy defines how the agent selects actions based on its current state.
 
+__Reward model__: the reward model is a R(s, a) function, which assigns a reward value to every state-action pair (s, a).
+
+__Objective of reinforcement learning__: $J(\phi) = \E \big(\sum R(s_t, a_t) \big)$ 
 
 ---
 
