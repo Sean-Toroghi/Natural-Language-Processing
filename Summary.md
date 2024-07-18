@@ -128,7 +128,7 @@ Some of the famouse activation functions
 
 $$\begin{equation}
 \begin{cases}
-x $ x > 0 \\ 
+x & x > 0 \\ 
 \alpha (e^x -1)
 \end{cases}
 \end{equation}$$
