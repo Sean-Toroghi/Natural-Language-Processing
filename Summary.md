@@ -264,7 +264,41 @@ Language models such as the newer versions of GPT models (3 and above) are consi
 
 The improvement in performance of LLMs relies on diversity and size of the data they were trained on, which makes them capable of understanding context, identifying nuances, and generating coherent and contextually relevant responses. 
 
-LLMs also are better in generalizing across different tasks, domain, or languages. The following picture [ref]() depics the 
+LLMs also are better in generalizing across different tasks, domain, or languages.
+
+As the size of LLMs increases, they impose challenge of handling computational cost and also higher risk of overfitting. 
+
+__challenges in developing LLMs__
+- handling massive amounts of data,
+- requiring vast computational resources,
+- risk of introducing or perpetuating bias
+- model robustness is not guaranteed. When dealing with ambiguous queries or out-of-distribution data, LLMs may not demonstrate consistant outputs.
+
+## Different types of LLMs
+LLMs are based on the “Transformer” architecture, are capable of processing sequenes, udnerstand long-range dependencies, speed up computation via parallelization, and come in variety of designs, each suitable for specific range of tasks.
+
+## pre-training, fine-tuning, and RHLF
+__Pre-training__:
+
+At this stage, the model is trained on a large corpus of publicly available text from the internet, while it does not know specifics about which documents were in its training set or have access to any specific documents or sources.
+
+
+__Fine-tuning__: the base model is further trained (fine-tuned) on custom datasets, which include demonstrations of correct behavior as well as comparisons to rank different responses.
+
+__RHLF__: as a part of the fine-tuning process involves RLHF, where human AI trainers provide feedback on model outputs for a range of example inputs, and this feedback is used to improve the model’s responses. 
+
+## RHLF
+RHLF is an iterative process and follows these steps:
+1. collect human feedback.
+2. comparison data is created, where multiple model responses are ranked by quality by human.
+3. The model is then fine-tuned using proximal policy optimization (PPO), a reinforcement learning algorithm.
+
+   PPO attempts to improve the model’s responses based on human feedback, making small adjustments to the model’s parameters to increase the likelihood of better-rated responses and decrease the likelihood of worse-rated responses.
+
+## PPO
+PPO is a reinforcement learning algorithm used to optimize the π policy of an agent. The policy defines how the agent selects actions based on its current state. PPO aims to optimize this policy to maximize the expected cumulative rewards.
+
+
 
 ---
 
