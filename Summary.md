@@ -134,7 +134,7 @@ x \\
 $$\begin{equation}
 \begin{cases}
 x \\ 
-\Delta_{1}-5=0,2\Delta_{1}-0,2\Delta_{0}
+\alpha
 \end{cases}
 \end{equation}$$
  
