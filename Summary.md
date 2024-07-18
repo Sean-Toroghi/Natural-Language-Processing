@@ -123,9 +123,7 @@ Some of the famouse activation functions
 - tanh: squashes input into range between -1 and 1, which makes it zero centered. However, it still suffer from vanishing gradient problem.
 - ReLU = $max(0,x)$: fixes the problem of vanishing gradient. But suffer from potential die issue.
 - Leaky ReLU = $max(0..0x, x)$ fixed the _dying ReLU_ problem
-- ELU = $$\begin{equation} \begin{cases} x & x > 0 \\ \alpha (e^x -1) \end{cases} \end{equation}$$
-
-
+- ELU =
 $$\begin{equation}
 \begin{cases}
 x & x > 0 \\ 
