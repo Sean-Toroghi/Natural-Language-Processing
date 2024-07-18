@@ -126,8 +126,8 @@ Some of the famouse activation functions
 - ELU
 $\begin{equation}
 \begin{cases}
-x & \text{if } x > 0 \\
-\alpha(e^x - 1) & \text{otherwise}
+x && \text{if } x > 0 \\
+\alpha(e^x - 1) && \text{otherwise}
 \end{cases}
 \end{equation}$
 
