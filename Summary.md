@@ -93,6 +93,7 @@ __Feature engineering__
 
 # Deep learning
 
+## Overview
 DL can be supervised, unsupervise, or semi-supervised. One advantage of DL is its global capability, meaning it can process and model data of variety types, including text, image, and audio. The downside of DL is its performance is correlated to the size of the model, making it computationaly expensive to develop a high performance model. Furthermor, its performance is highly sensitive to the size of input data. 
 
 Some of the advantage of a DL model:
@@ -103,6 +104,7 @@ Some of the advantage of a DL model:
 - parallel processing
 - learning from data, makes them highly effective as data size increases
 - robusness, against noise in the input
+
 
 With regards to NLP task, employ DL methods gives an edge due to the following reasons:
 - ability to handle sequential data, whether using RNN models such as LSTM or GRUs, or transformers-based models.
@@ -132,11 +134,105 @@ x & x > 0 \\
 \end{cases}
 \end{equation}$$
 
-- softmax function: if the goal is to get a probability, we can employ softmax function: $f(x_i) = \frac{e^x_i}{\sum e^x_j}$
- 
+- softmax function: if the goal is to get a probability, we can employ softmax function: $f(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}$
+
+
+__Challenges of training a neural network__
+- local minima
+- overfitting
+- underfitting
+- vanishing/exploding gradients
+- computational resources
+- lack of interpretability
+- correctly format data
+- zoo of model architectures
+
+## Common NN architectures
+
+- __feedForward neural netwrok (FNN)__ is the most straighforward type of a NN, in which information moves in one direction. 
+- __MLP__ is a type of FNN with fully connected layers. It is also a feedforward network.
+- __CNN__ consists of convolutional, pooling, and fully connected layers. 
+- __RNN__ has connections that form directed cycles, allowing the network to use information from both inputs and previous outputs. 
+- __LSTM__ is a variation of RNNs, which uses special units _memory cell_, in addition to standard units, that can maintain information in memory for long periods of time
+- __Autoencoder (AE)__ is a type of neural network used to learn the efficient coding of input data. With a symmetrical architecture, it is designed to apply backpropagation and setting the target values to be equal to the inputs. Autoencoders are typically used for feature extraction, learning representations of data, and dimensionality reduction. They’re also used in generative models, noise removal, and recommendation systems.
+- __Generative adversarial network (GAN)__: it consists of two parts, a generator and a discriminator. The generator creates data instances that aim to come from the same distribution as the training dataset. The discriminator’s goal is to distinguish between instances from the true distribution and instances from the generator. The generator and the discriminator are trained together, with the goal that the generator produces better instances as training progresses, whereas the discriminator becomes better at distinguishing true instances from generated ones.
+
+
+# Language model
+
+A language model is a statistical model in NLP that is designed to learn and understand the structure of human language. More specifically, it is a probabilistic model that is trained to estimate the likelihood of words when provided with a given word scenario.
+
+## Self-suprevised language models
+__Maked language modeling__
+
+By randomly masks some percentage of the input tokens and tasks the model with predicting the masked words based on the context provided by the unmasked words, the model is trained. BERT is an example of such a training approach.
+
+__Autoregressive language modeling__ 
+
+The model predicts the next word in a sentence given all the preceding words. It’s trained to maximize the likelihood of a word given its previous words in the sentence. GPT is an example of such models that employs this technique for its training.
+
+## Transfer learning
+Transfer learning is an ML technique where a pretrained model is reused as the starting point for a different but related problem. 
+
+In transfer learning, a model is typically trained on a large-scale task, and then parts of the model are used as a starting point for another task.
+
+## Quick over of transformers architecture
+- model calculates the relevance of each word in the sequence to the current workd being processed.
+- the input is a sequence of word embeddings, each of which split into Q,K,V using seperately learned transformations.
+- the attenction for each word is computed as follow: $score(Q<K<V) = SoftMax \frac{QK_T}{\sqrt{d_k}}$
+- attenction scores represent the weight given to each word’s value when producing the output for the current word.
+- The output of the self-attention layer is a new sequence of vectors, where the output for each word is a weighted sum of all the input values, with the weights determined by the attention scores.
+- To consider position of the word in the sequence as a part of input information, positional encoding is added to the input embeddings. 
+
+## Tokenization
+To make a language model more efficient, the input first need to be converted into a limited number of tokens, called tokenization. Some of the tokinzation algorithms are byte pair encoding (BPE), unigram language model (ULM), and WordPiece. They split words into smaller subword units.
+
+## BERT
+Based on transformer model architecture, BERT is designed to pretrain deep bidirectional representations from the unlabeled text by joint conditioning on both left and right contexts in all layers. 
+
+BERT tokenizer is a critical part of the model, which uses WordPiece tokenization. The steps BERT tokenizer takes are as following:
+1. basic tokenization, which consists of breaking text into individdual words by spliting on whitespace and punctuation.
+2. WordPeice tokenization: in this step, words are breaking down into subwords, until it finds a match in vocabulary of reaches character-level representation.
+3. additing special tokens, including [cls] to the beginning and [sep] to the end of each sentence.
+4. token to ID conversion is the last step, in which the tokens are mapped to integer ID corresponding to its index in the BERT vocabulary.
+
+### BERT pretraining
+During the pretraining stage, BERT was trained on large corpus of text, and was tasked to predict masked words and also distinguish whether two sentences come in order in the text. 
+
+### BERT fine-tuning
+After pretraining stage, BERT can be fined tuneed on a spesific task with a small size data (compare with the original dataset used for training it). 
+
+Steps that are needed to be taken for fine-tuning BERT, and to larger extend any language model, are as follow:
+1. preprocess input data to match the specific format that was originaly used to train the model. This includes using BERT tokenizer, adding special tokens, and pad/truncate sequences to match a uniform input size.
+2. loading the pretrained model that matches the task in hand is the second step. Models differin size and language of the pretraining data.
+3. adding a classification layer (classificaton head), a fully connected layer, is then added on top of the pretrained model, to make predictions for the text classification task. The input to this layer is the [cls] token and its outputs is the probability distribution over the classes.
+4. fine-tune the model is the next step, which includes train the model on the specific task, using labeled data. A common approach is to update the weights of the pretrained BERT model and the newly added classification layer to minimize a loss function, typically the cross-entropy loss for classification tasks, with lower learning rate value and two to four epochs.
+5. evaluating the fine-tuned model with eval set and fine-tune hyperparameters is th e next steps. Metrics such as F1-score, accuracy, recall, and precision are used for this evaluation.
+6. Finally the fine-tuned model is used to make prediction.
+
+__Note__: seq lenght fir BERT and its sisters is 512 tikens. In a case that requires longer input sequences, other models such as Longformer or BigBird are good choices.
+
+
+
+
+## GPT-x
+Generative pretrained transformer (GPT), is an autoregressive language model developed by OpenAI that uses DL techniques to generate human-like text. It comes in different version, the most up-to-dated one is 4 in 2024. GPT, unlike BERT, employs decoder part of the transformer architecture.
+
+GPT, unlike BERT, processes input data sequentially from left to right and generates predictions for the next item in the sequence. 
+### GPT pretraining
+Similar to BERT, GPT was trained on a large corpus of text, and learned to predict the next word in a sentence. However, it only uses the left context to make the prediction.
+
+### Fine-tuning GPT
+The fine-tuning og GPT could be done based on a range of different tasks such as text completion, translation, summarization, question answering, and so on. One feature of GPT=x models is their capability of zero-shot, one-shot, and few-shot learning.
+
+In the __zero-shot__ setting, the model is given a task without any prior examples. In the **one-shot** setting, it’s given one example, and in the **few-shot** setting, it’s given a few examples to learn from.
+
+__NOTE__: GPT models have difficulty in learning tasks that requrie deep understanding of the words or common sense reasoning beyond what can be learned from text.
+
+
 
 ## Classification with machine learning
-
+  
 
 ---
 
