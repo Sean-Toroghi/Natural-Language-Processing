@@ -91,7 +91,43 @@ __Feature engineering__
 ## Common machine learning methods
 ---
 
+# Deep learning
+
+DL can be supervised, unsupervise, or semi-supervised. One advantage of DL is its global capability, meaning it can process and model data of variety types, including text, image, and audio. The downside of DL is its performance is correlated to the size of the model, making it computationaly expensive to develop a high performance model. Furthermor, its performance is highly sensitive to the size of input data. 
+
+Some of the advantage of a DL model:
+- nonlinearity capability
+- universal approaximation theorem states that with high enought hidden units, it can approximate virtually any function with a high degree of accuracy.
+- ability to handle high dimensional data
+- capability to recognize patterns and make prediction, given large enough dataset
+- parallel processing
+- learning from data, makes them highly effective as data size increases
+- robusness, against noise in the input
+
+With regards to NLP task, employ DL methods gives an edge due to the following reasons:
+- ability to handle sequential data, whether using RNN models such as LSTM or GRUs, or transformers-based models.
+- context understanding,
+- semantic hashing, by employing word embedding (e.g. Word2Vec and GloVe), DL models can encode words while preserving their semantix meaning.
+- end-to-end learning, eliminates some of the preporocessing steps and save time/computation
+- peprformance, with the advance of transformers-based architectures (DeBERTA, GPT, ...) many NLP tasks such as text summarization, sentiment analysis, and question answering reach a pick performance.
+- handling large vocabulary, employing various tokenization techniques, DL models could handle larage vocabulary and continuous text extreme.
+- capability to learn hierarchical features, meaning lower layers learn simple things such as n-grams, while higher layers can represent complex concepts such as sentiments.
+
+Typical computation steps in a DL model:
+- weighted sum: each input $x$ is multiplied by a corresponding weight $w$m and summed with a bias term $b$.
+- activation functin: a nonlinearity is introduced to the output of previousstep via an activation function such as ReLU or tanh.
+- the weight and bias terms are learnable. During the forward pass a loss function computes loss based on the generated output and true target values. Then through the backward pass, the gradient of parameters w.r.t. loss is computated, and modification is applied by the optimization function. This iterative process continues until reaching a cap.
+
+Some of the famouse activation functions
+- sigmoid function: squashing the input into a range between 0 and 1. It has two drawbacks: 1. the vanishing gradients problem, and 2. the outputs are not zero-centered.
+- tanh: squashes input into range between -1 and 1, which makes it zero centered. However, it still suffer from vanishing gradient problem.
+- ReLU = $max(0,x)$: fixes the problem of vanishing gradient. But suffer from potential die issue.
+- Leaky ReLU = $max(0..0x, x)$ fixed the _dying ReLU_ problem
+- ELU - $\begin{cases} x & x>0 \\ \alpha(e^x - 1) & otherwise \end{cases}$
+- 
+
 ## Classification with machine learning
+
 
 ---
 
