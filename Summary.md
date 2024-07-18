@@ -127,13 +127,13 @@ Some of the famouse activation functions
 $\begin{equation}
 \begin{cases}
 x \\
-\alpha(e^x - 1) 
+\alpha (e^x - 1) 
 \end{cases}
 \end{equation}$
 
 $$\begin{equation}
 \begin{cases}
-\Delta_{0}=0,3\Delta_{1}+0,3\Delta_{0} \\ 
+x \\ 
 \Delta_{1}-5=0,2\Delta_{1}-0,2\Delta_{0}
 \end{cases}
 \end{equation}$$
