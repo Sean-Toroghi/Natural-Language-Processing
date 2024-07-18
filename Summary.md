@@ -124,19 +124,19 @@ Some of the famouse activation functions
 - ReLU = $max(0,x)$: fixes the problem of vanishing gradient. But suffer from potential die issue.
 - Leaky ReLU = $max(0..0x, x)$ fixed the _dying ReLU_ problem
 - ELU
-  $\begin{equation}
-   \begin{cases}
-  x & \text{if } x > 0 \\
-  \alpha(e^x - 1) & \text{otherwise}
-  \end{cases}
-  \end{equation}$
+$\begin{equation}
+\begin{cases}
+x & \text{if } x > 0 \\
+\alpha(e^x - 1) & \text{otherwise}
+\end{cases}
+\end{equation}$
 
-  $$\begin{equation}
-    \begin{cases}
-    \Delta_{0}=0,3\Delta_{1}+0,3\Delta_{0} \\ 
-    \Delta_{1}-5=0,2\Delta_{1}-0,2\Delta_{0}
-    \end{cases}
-    \end{equation}$$
+$$\begin{equation}
+\begin{cases}
+\Delta_{0}=0,3\Delta_{1}+0,3\Delta_{0} \\ 
+\Delta_{1}-5=0,2\Delta_{1}-0,2\Delta_{0}
+\end{cases}
+\end{equation}$$
  
 
 ## Classification with machine learning
