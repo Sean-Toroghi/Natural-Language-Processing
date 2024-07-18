@@ -295,6 +295,7 @@ RHLF is an iterative process and follows these steps:
 
    PPO attempts to improve the model’s responses based on human feedback, making small adjustments to the model’s parameters to increase the likelihood of better-rated responses and decrease the likelihood of worse-rated responses.
 
+
 ## PPO
 PPO is a reinforcement learning algorithm used to optimize the π policy of an agent. PPO aims to optimize the policy to maximize the expected cumulative rewards. The goal of the agent is to learn a policy π that maximizes the expected sum of rewards.
 
@@ -315,6 +316,21 @@ __In the context of language model__
 - actions correspond to the model-generated messages
 - rward correspond to the human feedback on the generated messages
 
+## Implementing RHLF
+Recent approach to utilize RHLF is to use it as a reward model, also lkknwon as preference model, to a text and return a scalar reward that reflexts human preference. There are two ways to implement this approach:
+1. implement an end-to-end LLM
+2. design an extra component that ranks different outputs of the LLM and erturns the best one.
+
+The dataset for training the reward model is a set of prompt-generation pairs. Then human annotators assign score to each text. 
+
+__Implementing RHLF__
+1. design and train reward model
+   
+    There are several approaches for text ranking, among which is the Elo ranking system, which gnenerates a ranking of models and outputs relative to each other. The implementation of Elo ranking for RHLF in LMs is as follow:
+    - initialization: all models starts with the same Elo rating (1000 or 1500)
+    - comparison, for a given prompt, two models generate tow outputs (A and B). A human evaluator ranks the two outputs
+    - the Elo rating is then updated after each evaluation.
+2. apply reinforcement learning to optimize the original LM concerning the reward model.
 
 
 
