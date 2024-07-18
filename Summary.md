@@ -16,6 +16,8 @@ __Table of contents__
 
 NLP is a field of artificial intelligence (AI) focused on the interaction between computers and human languages. It involves using computational techniques to understand, interpret, and generate human language, making it possible for computers to understand and respond to human input naturally and meaningfully.
 
+There are different approaches to solve a NLP task, inlcuding ruled-based, statistical, machine-learning, and deep-learning methods.
+
 Preprocessing is an important step in nlp, which includes general preprocessing (e.g. removing white spaces, removing special characters, convert digit to word, ...), stemming (e.g. jumped -> jump). lammatization (e.g. ran->run), normalization (e.g. lowercase, ro removing punctuations), clearning (e.g. removing duplicate or irrelevant data and correcting errors or inconsistencies in the data). A pipeline for data preprocessing could be as follow:
 
 raw text $\rightarrow$ remove encoding $\rightarrow$ lowe casing $\rightarrow$ digits to words $\rightarrow$ remove sspecial characters $\rightarrow$ spell correcting $\rightarrow$ stemming $\rightarrow$ lemmatizing
@@ -46,4 +48,69 @@ __Probabilities__
 - Maximum likelihood is a statistical approach, that is used to estimate the parameters of a probability distribution. The objective is to identify the parameter values that maximize the likelihood of observing the data, essentially determining the parameters most likely to have generated the data.
 - The maximum likelihood estimate (MLE) is the parameter vector value that offers the maximum value for the likelihood function across the parameter space.
 - Bayesian estimation is a statistical approach that involves updating our beliefs or probabilities about a quantity of interest based on new data.
-- 
+
+
+---
+
+## Machine learning for NLP
+
+
+### Data exploration
+
+Some of the standard preprocessing steps are:
+- visualization, enables visual exploration of data, getting insights into its distribution, patterns, and relationships with  scatter plots, bar charts, heatmaps, box plots, and correlation matrices.
+- data cleaning, includes identify the errors, inconsistencies, and missing values and correct them, remove duplicates, and filling in missing values (dropping rows/columns, apply mean/mode/median, regression, multiple imputes, and k-NN).
+- feature engineering, including scaling, normalization, dimensionality reduction, and feature selection, to identify pertinent features, transform existing ones, or generating novel features. Also dealing with outliers (removing, transforming, winsorizing, imputating, or using a robust methods (use median instead of mean)). 
+- statistical analysis, including hypothesis testing, regression analysis, and time series analysis to understand data's characteristics.
+- domain knwoledge, is a valuable asset in preprocessing that helps to extract insights and make informed decisions. It could help to recognize pertinent features, interpret results, and choose the most suitable algorithm for the task in hand.
+
+__Feature selection__
+
+The objective is to decrease the number of features without substantially compromising the model’s accuracy, resulting in enhanced performance, quicker training, and a more straightforward interpretation of the model.
+
+Some of the techniques for featuer selection:
+- filtering: employ statistical methods to rank features according to their correlation with the target variable (chi-squared, mutual information, and correlation coefficients), and select features based on predefined threshold.
+- Chi-square test: to guage the dependence btw random variables. In feature selection, the chi-squared test evaluates the relationship between each feature and the target variable in the dataset. It determines significance based on whether a statistically significant difference exists between the observed and expected frequencies of the feature, assuming independence between the feature and target.
+- Mutal information, as a metric to gauge te interdependence of two random variables. It quantifies the information a feature provides about the target variable.
+- Correelation coefficient, serves as indicators of the strength and direction of the linear relationship between two variables. In the realm of feature selection, these coefficients prove useful in identifying features highly correlated with the target variable, thus serving as potentially valuable predictors.
+- Wrapper methods, such as recursive feature elimination, use forward training and backward elimination to eliminate less informative features.
+- Embedded methods such as LASSO and ridge regression, decision trees, and random forests, select features during the training process.
+- Dimensionality reduction techniques, such as PCA, linear discriminant analysis (LDA), and t-SNE;  transform the features into a lower-dimensional space while retaining as much information as possible. 
+
+Common ML models
+Model underfitting and overfitting
+Splitting data
+Hyperparameter tuning
+Ensemble models
+Handling imbalanced data
+Dealing with correlated data
+
+__Feature engineering__
+
+
+## Common machine learning methods
+---
+
+## Classification with machine learning
+
+---
+
+## Classification with deep learning
+
+---
+
+## RAG
+
+---
+
+## LLM
+
+---
+
+## Frontier approaches!
+
+---
+---
+# Advance NLP course - CMU 2024
+
+
