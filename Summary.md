@@ -132,7 +132,7 @@ x & x > 0 \\
 \end{cases}
 \end{equation}$$
 
-- softmax function: if the goal is to get a probability, we can employ softmax function: $f(x_i) = \frac{e^x_i}{\sum e_x_j}$
+- softmax function: if the goal is to get a probability, we can employ softmax function: $f(x_i) = \frac{e^x_i}{\sum e^x_j}$
  
 
 ## Classification with machine learning
