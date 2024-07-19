@@ -378,11 +378,58 @@ PaLM employs some modifications to the original transformer design:
 - no biases
 - 256k-token SentencePiece vocabulary
 
+---
 
+# Utilize LLMs
+
+## huggingface
+
+Steps
+1. install necessary packages: `pip install –upgrade transformers`
+2. download a model, in this case microsoft DialoGPT
+
+   ```python
+   hf_model = "microsoft/DialoGPT-medium"
+   max_length = 1000
+   tokenizer = AutoTokenizer.from_pretrained(hf_model)
+   model = AutoModelForCausalLM.from_pretrained(hf_model)
+   ```
+3. define the probpt
+4. perform experiment
+5. results
 
 ---
 
-# RAG
+## RAG and LangChain
+
+### RAG
+
+Retrieval-Augmented Generation (RAG) is a development framework designed for seamless interaction with LLMs. RAG improves performance of LLM to be used for a specific task/field. It segments task specific documents, and when responding to a query, it find the most relevant segment to the query and adds it to the model retrieval process.
+
+### LangChain
+
+__Overview__
+
+LangChain can connect an arbitraru LLM to a defined data sources, making it possible to customize LLM to a specific domain. When structuring answer to a query, LangChain makes the data source act as a reference. In addition to pointing the model to data scouce, LangChain processing scheme is quick and efficient. 
+
+Steps
+1. First step is to generate vector database from input database in text format. This is done by chunking the text into appropriate lengths and creating numerical text embeddings (embeding model could be different from LLM that will be used for prompting).
+2. After storing embeddings in vector database, a search mechanism identifies the relevant data chunck to a user prompt.  This step is done by embedding the prompt and use a similarity algorithm such as cosine similarity to find the most similar chunks, and then retrieve texts associated with those chuncks.
+3. The prompt concatenated with the texts retrieved in the step 2, is then sent to LLM.
+
+__How LangChain works__
+- The building block of LangChain is called components, a prompt template. Combining multiple components creates a chain.
+- The next layer over chain is agents. Agents complement chains by adding extra information. Agents act as a reasoning mechanism, and add a prescribed logic to the chain for downstream processes.
+- Long-term memory is another concept that LongChain employs to append additional data sources. This feature gives LangChain ability to refer to prior conversations and learn from them.
+
+__LangChain pipeline__
+
+LangChain pipeline consists of the following steps
+- Load the text files
+- Process the data so that it can be prepared for embedding
+- Create the embeddings that would be stored in the vector database
+- Create the vector database
+- Perform a similarity search based on our in-house documents
 
 ---
 
