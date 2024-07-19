@@ -1,4 +1,28 @@
+# replace unicode esape inside a string with decode version
+import re
 
+def replace_unicode_escapes(input_string):
+    def decode_unicode_escape(match):
+        # Convert the matched Unicode escape sequence to a decoded character
+        escaped_sequence = bytes(match.group(0), 'utf-8').decode('unicode_escape')
+        return escaped_sequence
+
+    # Define the pattern to match Unicode escape sequences (\\uXXXX)
+    unicode_escape_pattern = r'\\u[0-9a-fA-F]{4}'
+    
+    # Use re.sub with a function to replace matches with decoded sequences
+    output_string = re.sub(unicode_escape_pattern, decode_unicode_escape, input_string)
+    
+    return output_string
+
+# Example usage
+input_str = "This is a \\u0411\\u043e\\u043b\\u044c\\u0448\\u0438\\u0435\\u0441\\u043e\\u0431\\u0441\\u0442\\u0432\\u0435\\u043d\\ string."
+decoded_str = replace_unicode_escapes(input_str)
+print(decoded_str)
+
+---
+---
+  
 
 # Preprocessing text - Cleaning
 import re
