@@ -331,13 +331,55 @@ __Implementing RHLF__
     - comparison, for a given prompt, two models generate tow outputs (A and B). A human evaluator ranks the two outputs
     - the Elo rating is then updated after each evaluation.
 2. apply reinforcement learning to optimize the original LM concerning the reward model.
+3. Fine-tune:
+    - Initially, the policy is an LM that accepts a prompt and produces a sequence of text (or merely probability distributions over text).
+    - The action space of this policy is all the tokens aligning with the LM’s vocabulary (typically around 50 K tokens), and
+    - the observation space is the distribution of possible input token sequences, which is also notably large in light of reinforcement learning’s prior uses (the dimension approximates the vocabulary size power (^) length of the input token sequence).
+    - The reward function melds the preference model with a constraint on policy shift.
+
+### Some open source RHLF 
+__GPT-2__
+
+OpenAI released the RHLF for GPT-2 [link](https://github.com/openai/lm-human-preferences) in 2019.
+
+__TRL__
+
+A crafted tool for fine0tuning a pre-trained LM using PPO within hugginface ecosystem [link](https://github.com/lvwerra/trl).
+
+__TRLX__
+
+An enhanced version of TRL, by CarperAI, equipped with production ready API supporting RHLF with PPO and implicit language Q-learning (ILQL) for deploying LLMs of up to 33 billion parameters [link](https://github.com/CarperAI/trlx). The newer version supports up to 200B parameters.
+
+__Reinforcement Learning for Language Models (RL4LMs)__
+
+The RL4LMs project addresses the challenge of training LLMs to align with human preference metrics [link](https://github.com/allenai/RL4LMs), by doing the following:
+- Giving guidelines on when to use reinforcement learning and suggesting suitable NLP tasks/metrics via a continually updated benchmark called GRUE
+
+- Introducing a new reinforcement learning algorithm, Natural Language Policy Optimization (NLPO), designed to handle large language action spaces and reward variance better
+- Offering practical advice with high-quality implementations and hyperparameters of reinforcement learning, as well as other reinforcement learning algorithms, for training Transformers in the Hugging Face library
+
+## LLaMA 
+LLaMA is a LLM designed by Meta, with low computation power requirements. LLaMA takes a sequence of words as input to predict the next word and generate text.
+
+
+## PaLM
+PaLM is a desley-activated LLM. PaLM employs the conventional Transformer model architecture in a decoder-exclusive setup, which allows each timestep to attend only to itself and preceding timesteps. It shows high performance in the following areas:
+- Multi-step reasoning tasks
+- Imitation Game Benchmark (BIG-bench)
+- Multilingual tasks
+- Source code generation
+
+PaLM employs some modifications to the original transformer design:
+- employ SwiGLU activation for MLP intermediate activations
+- parallel layers for each transformation block
+- employ multi-query attention
+- employ Rotary Position Embedding (RoPE) embeddings
+- shared input-output embeddings
+- no biases
+- 256k-token SentencePiece vocabulary
 
 
 
-
----
-
- 
 ---
 
 # RAG
