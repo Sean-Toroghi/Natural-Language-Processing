@@ -1,23 +1,24 @@
 
 
 # Preprocessing text - Cleaning
+import re
 def handle_non_ascii(text):
-    text = text.replace('\xa0', ' ')
-    text = re.sub("\x91|\x92|\xb4|‘|’", '\'', text)     
-    text = re.sub("\x93|\x94|\xa8|“|”", '"', text)     
-    text = re.sub("\x97|—", '-', text)     
-    text = re.sub(r"CO(\n|\s)*\xb2", "CO2", text)
-    text = re.sub("\xb2|\xb9|̈́", '', text)
-    text = re.sub("\xf3|\xd3|\xd6", 'o', text)       
-    text = re.sub("\xa9|\x99|\xae", '', text)         
-    text = re.sub('\xb6', "para ", text)              
-    text = re.sub('\xe4|\xe5|\xe1', 'a', text)        
-    text = re.sub('ś', "'s", text)                    
-    text = re.sub('\xe9', 'e', text)                 
-    text = re.sub('\xcb', 'E', text)                 
-    text = re.sub('\xfe', 't', text)                
+  text = text.replace('\xa0', ' ')
+  text = re.sub("\x91|\x92|\xb4|‘|’", '\'', text)     
+  text = re.sub("\x93|\x94|\xa8|“|”", '"', text)     
+  text = re.sub("\x97|—", '-', text)     
+  text = re.sub(r"CO(\n|\s)*\xb2", "CO2", text)
+  text = re.sub("\xb2|\xb9|̈́", '', text)
+  text = re.sub("\xf3|\xd3|\xd6", 'o', text)       
+  text = re.sub("\xa9|\x99|\xae", '', text)         
+  text = re.sub('\xb6', "para ", text)              
+  text = re.sub('\xe4|\xe5|\xe1', 'a', text)        
+  text = re.sub('ś', "'s", text)                    
+  text = re.sub('\xe9', 'e', text)                 
+  text = re.sub('\xcb', 'E', text)                 
+  text = re.sub('\xfe', 't', text)                
 
-    return text
+  return text
 
 cList = {
   "ain't": "am not", "aren't": "are not", "can't": "cannot", "can't've": "cannot have", "'cause": "because",
@@ -47,31 +48,59 @@ cList = {
 c_re = re.compile('(%s)' % '|'.join(cList.keys()))
 
 def expandContractions(text, c_re=c_re):
-    '''replacing abbreviations'''
-    def replace(match):
-        return cList[match.group(0)]
-    return c_re.sub(replace, text)
+
+  '''replacing abbreviations'''
+  def replace(match):
+    return cList[match.group(0)]
+  return c_re.sub(replace, text)
 
 def removeHTML(text):
-    html = re.compile(r'<.*?>')
-    return html.sub(r'',text)
+
+  html = re.compile(r'<.*?>')
+  return html.sub(r'',text)
+
+# convert unicode escape to string
+import re
+import codecs
+def replace_unicode_escapes(input_string):
+  def decode_unicode_escape(match):
+    # Convert the matched Unicode escape sequence to a decoded character
+    escaped_sequence = bytes(match.group(0), 'utf-8').decode('unicode_escape')
+    return escaped_sequence
+
+  # Define the pattern to match Unicode escape sequences (\\uXXXX)
+  unicode_escape_pattern = r'\\u[0-9a-fA-F]{4}'
+  
+  # Use re.sub with a function to replace matches with decoded sequences
+  output_string = re.sub(unicode_escape_pattern, decode_unicode_escape, input_string)
+  
+  return output_string
+
+ 
+
+
 
 def textPreprocessing(text):
-    text = text.strip()
-    text = text.replace("World War ||", "World War II")
-    text = re.sub(r"\\(?=\s)", '', text)
-    text = re.sub(r"(?<=\s)\\", '', text)
-    text = re.sub(r"(?<=\s)/(?=\s)", "or", text)
-    text = removeHTML(text)   
-    text = text.replace("\'\'", '"')    
-    text = re.sub(r", ", ",", text)     
-    text = re.sub(r"\. ", ".", text)     
-    text = re.sub(r"\.{2}", ".", text)     
-    text = re.sub(r"\.{4,}", ".", text)     
-    text = re.sub(r"\,{2,}", ",", text)     
-    text = re.sub(r"(?<=\w)\n{1,}", '', text)   # If next to the newline characters are letters, delete the
-    text = re.sub(r"\n{1,}", ' ', text)         # Remove newline characters and replace them with spaces
-    text = re.sub(r"\s{2,}", " ", text)         # Replace consecutive spaces with 1 space
-    text = handle_non_ascii(text)
-    text = expandContractions(text)   
-    return text
+  text = text.strip()
+  text = text.replace("World War ||", "World War II")
+  text = replace_unicode_escapes(text)
+  text = re.sub(r"\\(?=\s)", '', text)
+  text = re.sub(r"(?<=\s)\\", '', text)
+  text = re.sub(r"(?<=\s)/(?=\s)", "or", text)
+  text = removeHTML(text)   
+  text = text.replace("\'\'", '"')    
+  text = re.sub(r", ", ",", text)     
+  text = re.sub(r"\. ", ".", text)     
+  text = re.sub(r"\.{2}", ".", text)     
+  text = re.sub(r"\.{4,}", ".", text)     
+  text = re.sub(r"\,{2,}", ",", text)     
+  text = re.sub(r"(?<=\w)\n{1,}", '', text)   # If next to the newline characters are letters, delete the
+  text = re.sub(r"\n{1,}", ' ', text)         # Remove newline characters and replace them with spaces
+  text = re.sub(r"\s{2,}", " ", text)         # Replace consecutive spaces with 1 space
+  text = handle_non_ascii(text)
+  text = expandContractions(text)   
+  text = text.replace("\\n", " ")
+  text = text.replace("\\", "")
+  text = text.replace("\"", "")
+  text = text.replace("'", "")
+  return text
