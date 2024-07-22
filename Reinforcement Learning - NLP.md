@@ -1,0 +1,42 @@
+<h1>Reinforcement learning in NLP and its applications</h1>
+
+References
+- [RLHF - chatbots and LLMs](https://learning.oreilly.com/library/view/deep-reinforcement-learning/9798868802737/)
+- []()
+- []()
+- []()
+
+# Overview of reinforcement learning 
+
+# Markov decision process
+
+# Model-based approaches
+
+# Model-free approaches
+
+# Function approximation
+
+# Deep Q-learning
+
+
+# Poolicy gradient algorithms
+
+# Combining policy-gradient and Q-learning
+
+# Proximal policy optimization (PPO) and RLHF
+
+PPO algorithm uses human annotated preference as a reward mode to fine-tune LLMs to follow the human preferences. 
+
+History: it is noted controling size of policy updat helps to stablize the model better than controlling the update of network parameters. There are two approaches for controlling the policy update: 1-- trust region policy optimization, and 2- proximal policy optimization. They both make sure a new update to policy does not change it significantly. 
+
+In TRPO approach, we build a hard constrain around the policy update via defining Kullback-Liebler (KL) distance between current and new policy and limit it to small value. Basically we build a trust region around the policy update to control its volatility. However, computing KL distance is not easy and instead we employ approximation (Tylor) approach and replace KL with sample-based estimation. Then we compute Hessian of the sample average KL divergence as a part of the second step. And finaly update parameters that both improves the sample loss and satisfies the KL divergence constraint [TRPO paper](https://arxiv.org/pdf/1502.05477). Although the paper shows the proposed approach works, it requires calculating and inverting a very large matrix for Hessian computation part.
+
+PPO is an alternate between sampling data through interaction with the environment and optimizing a “surrogate” objective function using stochastic gradient ascent. This makes it more efficient compare with TRPO approach [PPO paper](). 
+
+## PPO - step by step
+
+
+
+# Multi-agent reinforcement learning (MARL)
+
+# 
