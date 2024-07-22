@@ -36,7 +36,11 @@ PPO is an alternate between sampling data through interaction with the environme
 ## PPO - step by step
 
 ### Score function and MLE estimator
-Given probability distribution of some samples, computigng joint probability conditioned on the unknown parameter $\theta$ can be computed as $P(x_1, ..., x_n|\theta) = \prod P(x_i|\theta)$. After transforming both side with log-transformer we have $\log P(x_1, x_2| ...|x_n|\theta) = \sum \log P(x_i|\theta)$. Finally taking average and multiply it by -1, we will have what is called _negative log loss_ as follow: $1NLL = - \frac{1}{n\}\log P(x_1, x_2| ...|x_n|\theta) =  - \frac{1}{n} \sum \log P(x_i|\theta)$. The optimization goal then will be to minimize $NLL$ w.r.t. $\theta$.
+Given probability distribution of some samples, computigng joint probability conditioned on the unknown parameter $\theta$ can be computed as $P(x_1, ..., x_n|\theta) = \prod P(x_i|\theta)$. After transforming both side with log-transformer we have $\log P(x_1, x_2| ...|x_n|\theta) = \sum \log P(x_i|\theta)$. Finally taking average and multiply it by -1, we will have what is called _negative log loss_ as follow: $NLL = - \frac{1}{n\}\log P(x_1, x_2| ...|x_n|\theta) =  - \frac{1}{n} \sum \log P(x_i|\theta)$. The optimization goal then will be to minimize $NLL$ w.r.t. $\theta$.
+
+In stochastic gradient descent approach, we adjust $\theta$ by computing gradient of $NLL$ w.r.t. $\theta$: $\theta = \theta + \alpha \Delta_\theta NLL$ 
+
+
 , Hessian Matrix, Fisher Information Matrix, and natural gradients,
 
 
