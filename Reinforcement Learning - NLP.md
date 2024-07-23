@@ -54,4 +54,18 @@ Hessian H, it is a square matrix that computed by taking the second-order partia
 
 # Multi-agent reinforcement learning (MARL)
 
-# 
+
+
+## Prompt engineering
+Due to the effectiveness of LLMs’s ability to follow instructions/prompts and carry out various NLP tasks, prompt engineering has become a new discipline when it comes to LLMs. Some of the promp techniques are:
+- zero-shot prompting: only consists of instruction and input data
+- Few-shot prompting (in-context learning): additional infomation (context) in the form of examples is provided to the model.
+- chain of thought prompting: an intermediate reasoning step is added to each example in few-shot prompting. After introducing this approach in 2022 by google, a large host of papers followed this path and introduce the original idea with different variations and enhancements.
+  - self-consistency improvement to CoT: employ several CoT passes and generate final output with majority voting.
+  - zero-shot chain-of-thought: adds "Let’s think step by step" to the original prompt.
+  - Automatic chain-of-thought: employs an automated approach to select diverse examples that help increase the guidance to the LLM in the form of additional context.
+  - There are many more CoT modifications/enhancement proposed during past years, and counting.
+ 
+# RHLF
+RLHF is the process by which a raw trained (pretrained) LLM is further trained to produce output preferred by humans that can follow human instructions much more effectively.
+
