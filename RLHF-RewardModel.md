@@ -14,3 +14,4 @@ The reward model is a crucial component of the RLHF process. The RLHF pipeline t
 During the second phase, the fine-tuned model generates two distinct outputs in response to a user query. Human labelers then select the preferred output, rejecting the other. Methods such as the Bradley-Terry model can be used to compute a preference distribution based on this feedback, employing a reward function to guide the process. Treating this task as a binary classification problem results in the use of a negative log-likelihood loss function to optimize the reward model.
 
  
+
