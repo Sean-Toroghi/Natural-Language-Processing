@@ -73,6 +73,23 @@ __Different types of prompting:__
 - Chain-of-Thought prompting
 - Adversarial Prompting
 
+---
+
+# How LLMs changed software development
+
+Nowadays developers can make API calls to a hosted version of an LLM, with the option of customizing it for their specific needs. An example is _copilot system_, such as Microsoft-Copilot and OpenAI ChatGPT both powered by GPT-4 model, which is a new category of software serve as an expert helper to users who want to perform a complex task. This concept allowsto embed and orchestrate LLMs within user applications, without a need to use programming language. Andrej Karpathy, the previous Director of AI at Tesla, tweeted in 2023 “English is the hottest new programming language.” 
+
+## AI orchestrators to embed LLMs into applications
+
+__Main components of AI orchestrators__
+
+- model: the type of LLM that is picked to embed in customized application. There are two main categories of models: 1. proprietary LLMs owened by a company such as GPT-4 or Brad, and 2. open-source models, that are freely available such as Falcon LLM, developed by Abu Dhabi’s Technology Innovation Institute (TII), or LLaMA, developed by Meta.
+- memory: LLM applications use a conversational interface, which requires the aiblity to refer back to earlier information within the conversation. Memory allows application to store and retrieve past interations, and additional non-parametric knowledge to be added to the model. All past conversations (embedded into VectorDB) are stored in the memory.
+
+    VectorDB is a type of database that stores and retrieves information based on vectorized embeddings, the numerical representations that capture the meaning and context of text. VectorDB can be used to perform semantic search and retrieval based on the similarity of meanings rather than keywords. VectorDB can also help LLMs generate more relevant and coherent text by 
+providing contextual understanding and enriching generation results. Some examples of VectorDBs are Chroma, Elasticsearch, Milvus, Pinecone, Qdrant, Weaviate, and Facebook AI Similarity Search (FAISS).
+- Plug-insL are additional modules, integrated into the LLM to extend its functionality or adapt it to specific tasks. They act as add-ones, enhancing the capabilities of a LLM, beyound its core language generation or comprehension abilities.
+
 
 
 
