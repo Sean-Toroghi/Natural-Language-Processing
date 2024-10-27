@@ -81,16 +81,29 @@ Nowadays developers can make API calls to a hosted version of an LLM, with the o
 
 ## AI orchestrators to embed LLMs into applications
 
-__Main components of AI orchestrators__
+## Main components of AI orchestrators
 
 - model: the type of LLM that is picked to embed in customized application. There are two main categories of models: 1. proprietary LLMs owened by a company such as GPT-4 or Brad, and 2. open-source models, that are freely available such as Falcon LLM, developed by Abu Dhabi’s Technology Innovation Institute (TII), or LLaMA, developed by Meta.
 - memory: LLM applications use a conversational interface, which requires the aiblity to refer back to earlier information within the conversation. Memory allows application to store and retrieve past interations, and additional non-parametric knowledge to be added to the model. All past conversations (embedded into VectorDB) are stored in the memory.
 
     VectorDB is a type of database that stores and retrieves information based on vectorized embeddings, the numerical representations that capture the meaning and context of text. VectorDB can be used to perform semantic search and retrieval based on the similarity of meanings rather than keywords. VectorDB can also help LLMs generate more relevant and coherent text by 
 providing contextual understanding and enriching generation results. Some examples of VectorDBs are Chroma, Elasticsearch, Milvus, Pinecone, Qdrant, Weaviate, and Facebook AI Similarity Search (FAISS).
-- Plug-insL are additional modules, integrated into the LLM to extend its functionality or adapt it to specific tasks. They act as add-ones, enhancing the capabilities of a LLM, beyound its core language generation or comprehension abilities.
+- Plug-insL are additional modules, integrated into the LLM to extend its functionality or adapt it to specific tasks. They act as add-ones, enhancing the capabilities of a LLM, beyound its core language generation or comprehension abilities. The idea behind plug-ins is to make LLMs more versatile and adaptable, allowing developers and users to customize the behavior of the language model for their specific needs.
+- Prompts
+
+### LangChain
 
 
+### Haystack
+
+### Semantic Kernel
+
+## Choosing a framework
+
+
+
+
+---
 
 
 # Training 
